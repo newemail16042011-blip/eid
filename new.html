@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>New Page - Eid Mubarak</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #000000, #0a0a1a, #1a1a2e);
+            min-height: 100vh;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Shooting Stars */
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            border-radius: 50%;
+            animation: shoot 3s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateX(300px) translateY(300px) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Birds */
+        .birds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .bird {
+            position: absolute;
+            font-size: 24px;
+            animation: flyBird linear infinite;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+        }
+
+        @keyframes flyBird {
+            0% { transform: translateX(-100px) translateY(0) rotate(0deg); }
+            25% { transform: translateX(25vw) translateY(-15px) rotate(5deg); }
+            50% { transform: translateX(50vw) translateY(5px) rotate(-3deg); }
+            75% { transform: translateX(75vw) translateY(-10px) rotate(3deg); }
+            100% { transform: translateX(110vw) translateY(0) rotate(0deg); }
+        }
+
+        /* Moon */
+        .moon {
+            position: absolute;
+            top: 60px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #fffacd, #f0e68c, #daa520);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 25px rgba(255, 250, 205, 0.8),
+                0 0 50px rgba(255, 250, 205, 0.5);
+            animation: moonGlow 4s ease-in-out infinite;
+        }
+
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 12px;
+            width: 12px;
+            height: 12px;
+            background: rgba(200, 180, 100, 0.3);
+            border-radius: 50%;
+        }
+
+        @keyframes moonGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(255, 250, 205, 0.8), 0 0 50px rgba(255, 250, 205, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 250, 205, 1), 0 0 70px rgba(255, 250, 205, 0.7); }
+        }
+
+        /* Clouds */
+        .clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: linear-gradient(180deg, rgba(180,190,210,0.25) 0%, rgba(120,130,160,0.15) 100%);
+            border-radius: 50px;
+            filter: blur(8px);
+            animation: floatCloud linear infinite;
+        }
+
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud-1 {
+            width: 150px;
+            height: 50px;
+            top: 12%;
+            animation-duration: 40s;
+        }
+
+        .cloud-1::before {
+            width: 70px;
+            height: 70px;
+            top: -35px;
+            left: 25px;
+        }
+
+        .cloud-1::after {
+            width: 55px;
+            height: 55px;
+            top: -22px;
+            left: 75px;
+        }
+
+        .cloud-2 {
+            width: 130px;
+            height: 45px;
+            top: 22%;
+            animation-duration: 45s;
+            animation-delay: -15s;
+        }
+
+        .cloud-2::before {
+            width: 60px;
+            height: 60px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud-2::after {
+            width: 50px;
+            height: 50px;
+            top: -18px;
+            left: 65px;
+        }
+
+        .cloud-3 {
+            width: 170px;
+            height: 55px;
+            top: 8%;
+            animation-duration: 50s;
+            animation-delay: -25s;
+        }
+
+        .cloud-3::before {
+            width: 75px;
+            height: 75px;
+            top: -38px;
+            left: 30px;
+        }
+
+        .cloud-3::after {
+            width: 60px;
+            height: 60px;
+            top: -25px;
+            left: 90px;
+        }
+
+        .cloud-4 {
+            width: 140px;
+            height: 48px;
+            top: 30%;
+            animation-duration: 38s;
+            animation-delay: -8s;
+            opacity: 0.6;
+        }
+
+        .cloud-4::before {
+            width: 65px;
+            height: 65px;
+            top: -32px;
+            left: 22px;
+        }
+
+        .cloud-4::after {
+            width: 52px;
+            height: 52px;
+            top: -20px;
+            left: 70px;
+        }
+
+        .cloud-5 {
+            width: 160px;
+            height: 52px;
+            top: 18%;
+            animation-duration: 42s;
+            animation-delay: -30s;
+            opacity: 0.7;
+        }
+
+        .cloud-5::before {
+            width: 68px;
+            height: 68px;
+            top: -34px;
+            left: 28px;
+        }
+
+        .cloud-5::after {
+            width: 58px;
+            height: 58px;
+            top: -22px;
+            left: 82px;
+        }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(-100vw); }
+            100% { transform: translateX(100vw); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Notification */
+        .notification {
+            background: linear-gradient(145deg, #1e1e3f 0%, #141428 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 28px 22px;
+            width: 100%;
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .notification-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .notification-title {
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+
+        .notification-message {
+            color: #d4d4d4;
+            font-size: 15px;
+            text-align: center;
+            line-height: 1.65;
+            margin-bottom: 8px;
+        }
+
+        .notification-message .emoji {
+            font-size: 20px;
+        }
+
+        /* Button */
+        .btn-yes {
+            margin-top: 25px;
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #00c853 0%, #009624 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 200, 83, 0.45);
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 200, 83, 0.6);
+        }
+
+        .btn-yes:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 380px) {
+            .notification {
+                padding: 22px 18px;
+            }
+            
+            .notification-message {
+                font-size: 14px;
+            }
+            
+            .btn-yes {
+                padding: 16px 35px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-stars" id="shooting-stars"></div>
+
+    <!-- Moon -->
+    <div class="moon"></div>
+
+    <!-- Clouds -->
+    <div class="clouds">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
+    </div>
+
+    <!-- Notification -->
+    <div class="container">
+        <div class="notification">
+            <div class="notification-icon">😏</div>
+            <div class="notification-title">Sorry!</div>
+            <div class="notification-message">
+                Main ne es screen  par sirf Yes option rakha hai…<br><br>
+                kyunki mujhe pata hai tum <strong>'No'</strong> bolne wali ho,<br>
+                aur main risk nahi lena chahta <span class="emoji">😂</span>
+            </div>
+            <button class="btn btn-yes" onclick="window.location.href='main.html'">Yes</button>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 250;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 1.5 + 0.3;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        // Generate shooting stars
+        function createShootingStars() {
+            const container = document.getElementById('shooting-stars');
+            const count = 5;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.top = Math.random() * 60 + '%';
+                star.style.left = Math.random() * 50 + '%';
+                star.style.animationDelay = Math.random() * 8 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        createStars();
+        createShootingStars();
+    </script>
+</body>
+</html>

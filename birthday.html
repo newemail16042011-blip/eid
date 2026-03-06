@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday  In Advance Zanib</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1a0a2e, #2d1b4e, #4a2c6a);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+        
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Shooting Stars */
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            border-radius: 50%;
+            animation: shoot 3s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateX(300px) translateY(300px) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Balloons */
+        .balloons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            font-size: 60px;
+            animation: floatBalloon 8s ease-in-out infinite;
+        }
+
+        @keyframes floatBalloon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: fallConfetti 4s linear infinite;
+        }
+
+        @keyframes fallConfetti {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Container */
+        .container {
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 48px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cake-display {
+            font-size: 100px;
+            margin: 20px 0;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .birthday-message {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            padding: 30px 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            max-width: 550px;
+            margin: 0 auto 30px;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .birthday-message p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .birthday-message p:first-letter {
+            font-size: 22px;
+        }
+
+        .birthday-message .early-wish {
+            color: #ffd700;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px !important;
+        }
+
+        .birthday-message .wish-text {
+            color: #ff69b4;
+        }
+
+        .birthday-message .final-wish {
+            text-align: center;
+            color: #fff !important;
+            font-size: 20px !important;
+            margin-top: 20px !important;
+        }
+        
+        .back-btn {
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Top Left Back Button */
+        .back-btn-top {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 20;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .back-btn-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            body {
+                overflow-y: auto;
+                min-height: 100vh;
+            }
+
+            .back-btn-top {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+
+            .container {
+                padding: 15px;
+                padding-top: 60px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .cake-display {
+                font-size: 60px;
+            }
+
+            .birthday-message {
+                padding: 20px 15px;
+            }
+
+            .birthday-message p {
+                font-size: 14px;
+            }
+
+            .birthday-message .early-wish {
+                font-size: 16px;
+            }
+
+            .birthday-message .final-wish {
+                font-size: 16px !important;
+            }
+
+            .back-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Left Back Button -->
+    <a href="main.html" class="back-btn-top">← Back</a>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-stars" id="shooting-stars"></div>
+
+    <!-- Balloons -->
+    <div class="balloons" id="balloons"></div>
+
+    <!-- Confetti -->
+    <div class="confetti" id="confetti"></div>
+
+    <div class="container">
+        <div class="cake-display">🎂</div>
+        <h1>🎉 Happy Birthday! 🎉</h1>
+        
+        <div class="birthday-message">
+            <p class="early-wish">Happy Early Birthday, Zanib 🎂</p>
+            
+            <p>I know your birthday is on 16 April, but I'm wishing you a little early… because I don't know if I'll get the chance to say it that day.</p>
+            
+            <p>I pray that Allah fills your life with endless happiness, peace, and beautiful moments. May every day of your life bring you closer to the dreams you carry in your heart. May Allah protect you from every sadness and surround you with people who truly value and respect you.</p>
+            
+            <p class="wish-text">You deserve a life where your smile is real, your heart feels light, and your days are full of kindness and warmth. My prayer will always be that your life stays full of blessings, peace, and the kind of happiness that lasts for a long time.</p>
+            
+            <p>Even if life takes us on different paths, my dua for you will always remain the same — may Allah keep you safe, protect your heart, and give you a life filled with love, respect, and beautiful memories.</p>
+            
+            <p class="final-wish">Happy Early Birthday once again. I truly hope this coming year brings you nothing but peace and happiness. 🤍</p>
+        </div>
+        
+        <a href="main.html" class="back-btn">Back to Eid</a>
+    </div>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 2 + 1;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Generate balloons
+        function createBalloons() {
+            const balloonsContainer = document.getElementById('balloons');
+            const balloonEmojis = ['🎈', '🎉', '🎊', '🎁', '⭐', '💖'];
+            const balloonCount = 15;
+
+            for (let i = 0; i < balloonCount; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 60 + 20;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 3 + 6;
+                
+                balloon.style.left = `${x}%`;
+                balloon.style.top = `${y}%`;
+                balloon.style.animationDelay = `${delay}s`;
+                balloon.style.animationDuration = `${duration}s`;
+                
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+
+        // Generate confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff69b4', '#ff1493', '#ffd700', '#00ff00', '#00bfff', '#ff6347', '#9370db'];
+            const confettiCount = 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random() * 4}s`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        // Generate shooting stars
+        function createShootingStars() {
+            const container = document.getElementById('shooting-stars');
+            const count = 5;
+            
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'shooting-star';
+                star.style.top = Math.random() * 60 + '%';
+                star.style.left = Math.random() * 50 + '%';
+                star.style.animationDelay = Math.random() * 8 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        createStars();
+        createBalloons();
+        createConfetti();
+        createShootingStars();
+    </script>
+</body>
+</html>
